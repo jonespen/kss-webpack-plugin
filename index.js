@@ -12,11 +12,10 @@ function KssPlugin(options) {
 
 KssPlugin.prototype.apply = function (compiler) {
   var self = this;
-  compiler.plugin('emit', function(compilation, callback) {
+  compiler.plugin('done', function() {
     kss(self.options, function (error) {
       if (error) throw error;
     });
-    callback();
   });
 };
 
