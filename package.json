@@ -10,5 +10,12 @@
   "license": "MIT",
   "peerDependencies": {
     "kss": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonespen/kss-webpack-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jonespen/kss-webpack-plugin/issues"
   }
 }

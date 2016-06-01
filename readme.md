@@ -1,4 +1,5 @@
-# KSS Webpack plugin
+KSS Webpack plugin
+===================
 
 [![NPM](https://nodei.co/npm/kss-webpack-plugin.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/kss-webpack-plugin/)
 
