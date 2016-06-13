@@ -9,7 +9,7 @@
   "author": "Jon Espen Kvisler <jonespen@gmail.com> (https://github.com/jonespen)",
   "license": "MIT",
   "dependencies": {
-    "kss": "*"
+    "kss": "^3.0.0 || ^3.0.0-beta.14"
   },
   "repository": {
     "type": "git",
