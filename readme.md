@@ -41,7 +41,7 @@ Then pass the path to the template in the `KssConfig` object like this
 var KssWebpackPlugin = require('kss-webpack-plugin');
 var KssConfig = {
   source: 'path/to/css_or_scss',
-  template: 'path/to/template'
+  builder: 'path/to/template'
 };
 var webpackConfig = {
   entry: 'index.js',
