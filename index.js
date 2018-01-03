@@ -29,7 +29,7 @@ KssPlugin.prototype.apply = function (compiler) {
 KssPlugin.prototype.render = function (compilation, callback) {
   var self = this;
   new Promise(function(resolve, reject) {
-    var assets = this._buildAssets(compilation);
+    var assets = self._buildAssets(compilation);
   
     kss(Object.assign({}, self.options, assets), function (error) {
       if (error) throw error;
