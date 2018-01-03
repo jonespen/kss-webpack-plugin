@@ -8,16 +8,21 @@ function KssPlugin(options) {
   if (!options.source) {
     throw 'kss webpack plugin: source is not defined';
   }
-  if(!options.chunks) {
-    throw 'kss webpack plugin: chunks not defined'
-  }
   this.options = options;
 }
 
 KssPlugin.prototype.apply = function (compiler) {
-  compiler.plugin('emit', (compilation, callback) => {
-    this.render(compilation, callback);
-  });
+  if (!options.chunks) {
+    compiler.plugin('done', function() {
+      kss(self.options, function (error) {
+        if (error) throw error;
+      });
+    });
+  } else {
+    compiler.plugin('emit', (compilation, callback) => {
+      this.render(compilation, callback);
+    });
+  }
 };
 
 KssPlugin.prototype.render = function (compilation, callback) {
