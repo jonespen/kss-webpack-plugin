@@ -12,7 +12,8 @@ function KssPlugin(options) {
 }
 
 KssPlugin.prototype.apply = function (compiler) {
-  if (!options.chunks) {
+  var self = this;
+  if (!self.options.chunks) {
     compiler.plugin('done', function() {
       kss(self.options, function (error) {
         if (error) throw error;
