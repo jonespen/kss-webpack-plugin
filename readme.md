@@ -39,9 +39,9 @@ var KssConfig = {
 };
 var webpackConfig = {
   entry: {
-		styles: './assets/scss/index.scss',
+    styles: './assets/scss/index.scss',
     common: './assets/js/index.js',
-	},
+  },
   output: {
     path: 'dist',
     filename: 'index_bundle.js'
