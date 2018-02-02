@@ -35,10 +35,13 @@ KssPlugin.prototype.render = function (compilation, callback) {
       if (error) throw error;
     });
     resolve();
-  }).then(() => {
+  })
+    .then(() => {
       callback();
-    }
-  )
+    })
+    .catch(() => {
+      callback();
+    })
 };
 
 KssPlugin.prototype._buildAssets = function (compilation) {
