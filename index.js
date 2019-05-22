@@ -13,16 +13,32 @@ function KssPlugin(options) {
 
 KssPlugin.prototype.apply = function (compiler) {
   var self = this;
+
+  var kssCompile = function(compilation) {
+    kss(self.options, function(error) {
+      if (error) throw error;
+    });
+  }
+
+  var kssRender = function(compilation, callback) {
+    this.render(compilation, callback);
+  }
+
   if (!self.options.chunks) {
-    compiler.plugin('done', function() {
-      kss(self.options, function (error) {
-        if (error) throw error;
-      });
-    });
-  } else {
-    compiler.plugin('emit', (compilation, callback) => {
-      this.render(compilation, callback);
-    });
+    if (compiler.hooks) {
+      compiler.hooks.done.tap('KssPlugin', kssCompile);
+    }
+    else {
+      compiler.plugin('done', kssCompile);
+    }
+  }
+  else {
+    if (compiler.hooks) {
+      compiler.hooks.emit.tap('KssPlugin', kssRender);
+    }
+    else {
+      compiler.plugin('emit', kssRender);
+    }
   }
 };
 
