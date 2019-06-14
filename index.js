@@ -1,5 +1,5 @@
-var kss = require('kss');
-var path = require('path');
+const kss = require('kss');
+const path = require('path');
 
 function KssPlugin(options) {
   if (!options) {
@@ -11,20 +11,18 @@ function KssPlugin(options) {
   this.options = options;
 }
 
-KssPlugin.prototype.apply = function (compiler) {
-  var self = this;
-
-  var kssCompile = function(compilation) {
-    kss(self.options, function(error) {
+KssPlugin.prototype.apply = function apply(compiler) {
+  const kssCompile = () => {
+    kss(this.options, (error) => {
       if (error) throw error;
     });
   }
 
-  var kssRender = function(compilation, callback) {
+  const kssRender = (compilation, callback) => {
     this.render(compilation, callback);
   }
 
-  if (!self.options.chunks) {
+  if (!this.options.chunks) {
     if (compiler.hooks) {
       compiler.hooks.done.tap('KssPlugin', kssCompile);
     }
@@ -42,12 +40,11 @@ KssPlugin.prototype.apply = function (compiler) {
   }
 };
 
-KssPlugin.prototype.render = function (compilation, callback) {
-  var self = this;
-  new Promise(function(resolve, reject) {
-    var assets = self._buildAssets(compilation);
-  
-    kss(Object.assign({}, self.options, assets), function (error) {
+KssPlugin.prototype.render = function render(compilation, callback) {
+  new Promise((resolve) => {
+    const assets = this._buildAssets(compilation);
+
+    kss(Object.assign({}, this.options, assets), (error) => {
       if (error) throw error;
     });
     resolve();
@@ -66,8 +63,8 @@ KssPlugin.prototype._buildAssets = function (compilation) {
     js: []
   };
 
-  this.options.chunks.forEach(function(key) {
-    var pushAsset = function(file) {
+  this.options.chunks.forEach((key) => {
+    const pushAsset = (file) => {
       const ext = path.extname(file);
 
       if (ext === '.css') {
@@ -75,7 +72,7 @@ KssPlugin.prototype._buildAssets = function (compilation) {
       } else if (ext === '.js') {
           assets.js.push(path.join('/', file));
       }
-    }   
+    }
 
     const asset = compilation.getStats().toJson().assetsByChunkName[key];
 
