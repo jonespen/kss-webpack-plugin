@@ -40,7 +40,8 @@ KssPlugin.prototype.apply = function apply(compiler) {
   }
 };
 
-KssPlugin.prototype.render = function render(compilation, callback) {
+KssPlugin.prototype.render = function render(compilation, cb) {
+  const callback = typeof cb === 'function' ? cb : () => {};
   new Promise((resolve) => {
     const assets = this._buildAssets(compilation);
 
