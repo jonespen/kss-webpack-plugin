@@ -2,6 +2,7 @@ KSS Webpack plugin
 ===================
 
 [![NPM](https://nodei.co/npm/kss-webpack-plugin.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/kss-webpack-plugin/)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjonespen%2Fkss-webpack-plugin.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjonespen%2Fkss-webpack-plugin?ref=badge_shield)
 
 ## Installation
 Install the plugin with npm:
@@ -75,3 +76,7 @@ var webpackConfig = {
   plugins: [new KssWebpackPlugin(KssConfig)]
 };
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjonespen%2Fkss-webpack-plugin.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjonespen%2Fkss-webpack-plugin?ref=badge_large)
