@@ -69,9 +69,9 @@ KssPlugin.prototype._buildAssets = function (compilation) {
       const ext = path.extname(file);
 
       if (ext === '.css') {
-          assets.css.push(path.join('/', file))
+        assets.css.push(path.join('/', path.join(this.options.assetPath, file)))
       } else if (ext === '.js') {
-          assets.js.push(path.join('/', file));
+        assets.js.push(path.join('/', path.join(this.options.assetPath, file)));
       }
     }
 
